@@ -1,0 +1,74 @@
+{
+	"info": {
+		"_postman_id": "acbc12d9-b7c0-4322-9cae-7c4a7a497e09",
+		"name": "Promociones",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "22606287"
+	},
+	"item": [
+		{
+			"name": "Creacion de promociones",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"type\": \"Descuento\",\r\n    \"code\": \"code_01\",\r\n    \"date\": \"2022-09-16\",\r\n    \"expiration\": \"2022-09-20\",\r\n    \"state\": \"0\",\r\n    \"percentage\":\"20\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://127.0.0.1:8000/api/promotions",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"promotions"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Validar que una promocion existe",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"code\": \"code_01\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://127.0.0.1:8000/api/existPromotions",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"existPromotions"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
