@@ -1,8 +1,9 @@
 {
 	"info": {
-		"_postman_id": "29de2da1-65c5-44dc-a001-e408d59f63d6",
+		"_postman_id": "2a066572-3b6e-4a5c-a6e8-feffa83caaa4",
 		"name": "MARKETPLACE",
-		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "22920665"
 	},
 	"item": [
 		{
@@ -55,6 +56,221 @@
 						}
 					},
 					"response": []
+				},
+				{
+					"name": "AddProduct",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"name\":\"prueba4\",\r\n  \"img_url\":\"a.jpg\",\r\n  \"stock\": 10,\r\n  \"price\":20.0,\r\n  \"description\":\"prueba4\",\r\n  \"subcategories_id\":10,\r\n  \"promotions_id\":8,\r\n  \"brands_id\":5,\r\n  \"users_id\":16\r\n}"
+						},
+						"url": {
+							"raw": "{{url}}/api/products",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"products"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Status Created",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"name": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n  \"name\":\"prueba4\",\r\n  \"img_url\":\"a.jpg\",\r\n  \"price\":20.0,\r\n  \"stock\": 10,\r\n  \"description\":\"prueba4\",\r\n  \"Subcategories_id\":8,\r\n  \"Promotions_id\":8,\r\n  \"Brands_id\":5,\r\n  \"Users_id\":16\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{url}}/api/products",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"api",
+										"products"
+									]
+								}
+							},
+							"code": 201,
+							"_postman_previewlanguage": "json",
+							"header": null,
+							"cookie": [],
+							"body": "{\r\n    \"code\": 201,\r\n    \"status\": \"Created\",\r\n    \"message\": \"The request succeeded, and create new product\"\r\n}"
+						},
+						{
+							"name": "Status Bad Request",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"name": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n  \"name\":\"prueba4\",\r\n  \"img_url\":\"a.jpg\",\r\n  \"price\":20.0,\r\n  \"description\":\"prueba4\",\r\n  \"Subcategories_id\":8,\r\n  \"Promotions_id\":8,\r\n  \"Brands_id\":5,\r\n  \"Users_id\":16\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{url}}/api/products",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"api",
+										"products"
+									]
+								}
+							},
+							"code": 400,
+							"_postman_previewlanguage": "json",
+							"header": null,
+							"cookie": [],
+							"body": "{\r\n    \"code\": 400,\r\n    \"status\": \"Bad Request\",\r\n    \"message\": \"The server cannot or will not process the request due to something that is perceived to be a client error.\",\r\n    \"errors\": {\r\n        \"subcategories_id\": [\r\n            \"The selected subcategories id is invalid.\"\r\n        ]\r\n    }\r\n}"
+						}
+					]
+				},
+				{
+					"name": "FindNProductxCategory",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/api/products/search?category=verduras",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"products",
+								"search"
+							],
+							"query": [
+								{
+									"key": "category",
+									"value": "verduras"
+								}
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Status Ok",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{url}}/api/products/search?category=Tecnología",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"api",
+										"products",
+										"search"
+									],
+									"query": [
+										{
+											"key": "category",
+											"value": "Tecnología"
+										}
+									]
+								}
+							},
+							"_postman_previewlanguage": "json",
+							"header": null,
+							"cookie": [],
+							"body": "{\r\n    \"code\": 200,\r\n    \"status\": \"Ok\",\r\n    \"message\": \"The request to search for 20 Product by Tecnología successful.\",\r\n    \"data\": [\r\n        {\r\n            \"id\": 10,\r\n            \"name\": \"Tecnología\",\r\n            \"price\": \"24.00\",\r\n            \"img_url\": \"asawd\",\r\n            \"description\": \"Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum\",\r\n            \"date\": \"2022-08-22 21:10:29\",\r\n            \"state\": 0,\r\n            \"Subcategories_id\": 8,\r\n            \"Promotions_id\": 9,\r\n            \"Brands_id\": 5,\r\n            \"Users_id\": 19,\r\n            \"Categories_id\": 10\r\n        },\r\n        {\r\n            \"id\": 10,\r\n            \"name\": \"Tecnología\",\r\n            \"price\": \"20.00\",\r\n            \"img_url\": \"a.jpg\",\r\n            \"description\": \"Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum\",\r\n            \"date\": \"2022-08-23 23:46:31\",\r\n            \"state\": 0,\r\n            \"Subcategories_id\": 8,\r\n            \"Promotions_id\": 8,\r\n            \"Brands_id\": 5,\r\n            \"Users_id\": 16,\r\n            \"Categories_id\": 10\r\n        },\r\n        {\r\n            \"id\": 10,\r\n            \"name\": \"Tecnología\",\r\n            \"price\": \"20.00\",\r\n            \"img_url\": \"a.jpg\",\r\n            \"description\": \"Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum\",\r\n            \"date\": \"2022-08-23 23:49:53\",\r\n            \"state\": 0,\r\n            \"Subcategories_id\": 8,\r\n            \"Promotions_id\": 8,\r\n            \"Brands_id\": 5,\r\n            \"Users_id\": 16,\r\n            \"Categories_id\": 10\r\n        },\r\n        {\r\n            \"id\": 10,\r\n            \"name\": \"Tecnología\",\r\n            \"price\": \"20.00\",\r\n            \"img_url\": \"a.jpg\",\r\n            \"description\": \"Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum\",\r\n            \"date\": \"2022-08-25 19:43:46\",\r\n            \"state\": 0,\r\n            \"Subcategories_id\": 8,\r\n            \"Promotions_id\": 8,\r\n            \"Brands_id\": 5,\r\n            \"Users_id\": 16,\r\n            \"Categories_id\": 10\r\n        },\r\n        {\r\n            \"id\": 10,\r\n            \"name\": \"Tecnología\",\r\n            \"price\": \"20.00\",\r\n            \"img_url\": \"a.jpg\",\r\n            \"description\": \"Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum\",\r\n            \"date\": \"2022-08-25 19:44:47\",\r\n            \"state\": 0,\r\n            \"Subcategories_id\": 8,\r\n            \"Promotions_id\": 8,\r\n            \"Brands_id\": 5,\r\n            \"Users_id\": 16,\r\n            \"Categories_id\": 10\r\n        },\r\n        {\r\n            \"id\": 10,\r\n            \"name\": \"Tecnología\",\r\n            \"price\": \"20.00\",\r\n            \"img_url\": \"a.jpg\",\r\n            \"description\": \"Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum\",\r\n            \"date\": \"2022-08-25 20:12:02\",\r\n            \"state\": 0,\r\n            \"Subcategories_id\": 8,\r\n            \"Promotions_id\": 8,\r\n            \"Brands_id\": 5,\r\n            \"Users_id\": 16,\r\n            \"Categories_id\": 10\r\n        },\r\n        {\r\n            \"id\": 10,\r\n            \"name\": \"Tecnología\",\r\n            \"price\": \"20.00\",\r\n            \"img_url\": \"a.jpg\",\r\n            \"description\": \"Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum\",\r\n            \"date\": \"2022-08-25 20:20:49\",\r\n            \"state\": 0,\r\n            \"Subcategories_id\": 8,\r\n            \"Promotions_id\": 8,\r\n            \"Brands_id\": 5,\r\n            \"Users_id\": 16,\r\n            \"Categories_id\": 10\r\n        },\r\n        {\r\n            \"id\": 10,\r\n            \"name\": \"Tecnología\",\r\n            \"price\": \"20.00\",\r\n            \"img_url\": \"a.jpg\",\r\n            \"description\": \"Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum\",\r\n            \"date\": \"2022-08-25 20:21:48\",\r\n            \"state\": 0,\r\n            \"Subcategories_id\": 8,\r\n            \"Promotions_id\": 8,\r\n            \"Brands_id\": 5,\r\n            \"Users_id\": 16,\r\n            \"Categories_id\": 10\r\n        },\r\n        {\r\n            \"id\": 10,\r\n            \"name\": \"Tecnología\",\r\n            \"price\": \"20.00\",\r\n            \"img_url\": \"a.jpg\",\r\n            \"description\": \"Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum\",\r\n            \"date\": \"2022-08-25 20:29:30\",\r\n            \"state\": 0,\r\n            \"Subcategories_id\": 8,\r\n            \"Promotions_id\": 8,\r\n            \"Brands_id\": 5,\r\n            \"Users_id\": 16,\r\n            \"Categories_id\": 10\r\n        }\r\n    ]\r\n}"
+						},
+						{
+							"name": "Status Bad Request",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{url}}/api/products/search?category=",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"api",
+										"products",
+										"search"
+									],
+									"query": [
+										{
+											"key": "category",
+											"value": ""
+										}
+									]
+								}
+							},
+							"_postman_previewlanguage": "json",
+							"header": null,
+							"cookie": [],
+							"body": "{\r\n    \"code\": 400,\r\n    \"status\": \"Bad Request\",\r\n    \"message\": \"The server cannot or will not process the request due to something that is perceived to be a client error.\",\r\n    \"errors\": {\r\n        \"category\": [\r\n            \"The category field is required.\"\r\n        ]\r\n    }\r\n}"
+						},
+						{
+							"name": "Status Not Found",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{url}}/api/products/search?category=verduras",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"api",
+										"products",
+										"search"
+									],
+									"query": [
+										{
+											"key": "category",
+											"value": "verduras"
+										}
+									]
+								}
+							},
+							"_postman_previewlanguage": "json",
+							"header": null,
+							"cookie": [],
+							"body": "{\n    \"code\": 404,\n    \"status\": \"Not Found\",\n    \"message\": \"The server can not find the requested resource.\",\n    \"error\": [\n        \"Category : verduras not found\"\n    ]\n}"
+						}
+					]
 				}
 			]
 		},
@@ -122,10 +338,10 @@
 									]
 								}
 							},
-							"_postman_previewlanguage": null,
-							"header": null,
+							"_postman_previewlanguage": "Text",
+							"header": [],
 							"cookie": [],
-							"body": null
+							"body": ""
 						}
 					]
 				}
